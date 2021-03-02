@@ -1,0 +1,450 @@
+@import "variables.scss";
+
+.btn:focus {
+    outline: 0;
+    box-shadow: none;
+}
+
+.section{
+	padding: 3.5rem 0rem;
+}
+.wrapper{
+  padding: 40px 0px;
+}
+.zoom-div{
+  transition: transform .3s;
+}
+.zoom-div:hover {
+  -ms-transform: scale(1.05); /* IE 9 */
+  -webkit-transform: scale(1.05); /* Safari 3-8 */
+  transform: scale(1.05);
+  -webkit-box-shadow: 0px 0px 12px -2px rgba(227,34,60,1);
+  -moz-box-shadow: 0px 0px 12px -2px rgba(227,34,60,1);
+  box-shadow: 0px 0px 12px -2px rgba(227,34,60,1);  
+}
+.cursor-pointer{
+  cursor: pointer;
+}
+.fw500{
+  font-weight:500
+}
+
+.lh2{
+    line-height: 2
+  }
+  .total-vehicles{
+      float: left;
+      padding-left: 15px;
+      padding-right: 30px;
+      background: url(https://www.yacopinisa.com/wp-content/plugins/automotive/images/ribbon-bg.png) top right no-repeat;
+      line-height: 36px;
+      margin-right: 12px !important;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 36px;
+      color: $dark_3
+  }
+  #section-uct-toyota .bg-section-uct-toyota{
+    background-color: $ligth_2
+  }
+
+
+/**
+  ALERTS BOOTSTRAP
+***/
+.alert.alert-bg-light {
+  padding: 1.25rem;
+  border-color: $ligth_2;
+  background-color: $ligth_2;
+  border-radius: 0;
+  color: #373435;
+}
+
+/**
+  BUTTONS
+***/
+.button:disabled{
+  cursor:not-allowed;
+}
+.button {
+    cursor: pointer;
+    box-sizing: border-box;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 600;
+    text-align: center;
+    padding: .25rem .5rem;
+    border-radius: 100px;
+    margin-bottom: .2rem;
+    border: 2px solid;
+    outline: none;
+    transition: all .4s ease-in-out;
+}
+a.button {
+	text-decoration: none;
+}
+/*Sizes Buttons*/
+.button-sm {
+    min-width: 7.5rem;
+}
+.button-md {
+    min-width: 15rem;
+    font-size:1.3rem;
+}
+/*Color Buttons*/
+.button-white {
+    color: $dark;
+    background-color: $ligth;
+    border-color: $ligth;
+}
+.button-white:hover {
+    color: $ligth;
+    background-color: $dark;
+}
+.button-dark {
+    color: $ligth;
+    background-color: $dark;
+    border-color: $dark;
+}
+.button-dark:hover {
+    color: $dark;
+    background-color: $ligth;
+}
+
+/**
+  VEHICLE
+***/
+@media only screen and (max-width: $breakpoint-sm) and (min-width: 500px) {  
+  .vehicle-content .vehicle-footer{
+    margin-top: 35px !important;
+  }
+}  
+.vehicle-item a{
+    text-decoration: none;
+    color: $dark_2;
+  }
+  .vehicle-content{
+    margin: 0px 5px;
+    position: relative
+    // height: 250px;
+      // background-image: -webkit-gradient(linear,left bottom,left top,color-stop(10%,rgba(25,25,25,.35)),to(transparent));
+      // background-image: linear-gradient(0deg,rgba(25,25,25,.35) 5%,transparent);
+  }
+  .vehicle-content .vehicle-image{
+    height: 130px;
+  }
+  .vehicle-content .vehicle-footer{
+    margin-top: 15px;
+      background: $ligth;
+      min-height: 120px;
+      clear: both;
+      padding: 20px 20px 15px 20px;
+      overflow: hidden;
+  }
+  .vehicle-content .vehicle-footer .title {
+      font-size: 18px;
+      text-align: center;
+      color: $dark;
+      padding: 0 0 15px 0;
+      display: inline-block;
+      width: 100%;
+      font-weight: 700;
+  }
+  .vehicle-content .vehicle-footer .ul-features {
+    display: inline-block;
+      width: 100%;
+      text-align: center;
+      // margin-bottom: 15px;
+      // padding-bottom: 10px;
+      border-bottom: #cccccc 1px solid;
+  }
+  .img-es-hibrido{
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 70px;
+  }
+
+/**
+  MEDIA QUERYS
+***/
+@media (min-width: $breakpoint-sm) { 
+	.section{
+		padding: 3.5rem 0rem;
+	}
+}
+
+@media (min-width: $breakpoint-lg) {  }
+
+@media (min-width: $breakpoint-xl) {  }
+
+
+/**
+  SEKELETOM
+***/
+.skeleton {
+  background: linear-gradient(90deg, #ededed, #ffffff, #ededed);
+  animation-name: load;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-direction: forwards;
+  animation-timing-function: linear;
+  background-size: 200% 100%;
+}
+
+.skeleton.skeleton-title{
+    min-height: 35px;
+}
+.skeleton.skeleton-p{
+    height: 20px;
+}
+.skeleton.skeleton-body{
+    height: 250px;
+}
+.skeleton.skeleton-sm{
+    height: 150px;
+}
+.skeleton.skeleton-md{
+    width: 100%;
+    min-height: 250px;
+}
+.skeleton.skeleton-lg{
+    width: 100%;
+    min-height: 550px;
+}
+
+@keyframes load {
+  from {
+    background-position: 100% 0%;
+  }
+  to {
+    background-position: -100% 0%;
+  }
+}
+
+/*
+  DIVIDER
+***/
+.custom-divider{
+  width: 100%;
+  display: flex;
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.3);
+}
+.custom-divider.lft{
+  justify-content: flex-start;
+}
+.custom-divider.rgt{
+  justify-content: flex-end;
+}
+.custom-divider span{
+  width: 30px;
+  height: 1px;
+  display: block;
+  // margin-top: 15px;
+  margin-bottom: -1px;
+  background-color: rgba(0, 0, 0, 0.5); 
+}
+
+/*
+  CUSTOM INPUTS
+***/
+.custom-input-text {
+      padding: 0 20px 0 58px;
+      height: 52px;
+      display: block;
+      width: 100%;
+      background: transparent;
+      color: #43383e;
+      line-height: 1.2;
+  }
+
+  .label-custom-input-text {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 58px;
+      height: 52px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      cursor: pointer;
+      font-size: 18px;
+      color: #999999;
+  }
+  .label-custom-input-text-area {
+    height: 84px;
+      padding: 10px 0 0 58px;
+  }
+
+/**
+* Usados
+***/
+.vehicle a:hover{
+    text-decoration: none;
+  }
+  .vehicle span,
+  .vehicle-detail .price-wrapper .price-text{
+    color: $dark;
+  }
+  .vehicle{
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .vehicle-image-wrapper{
+    width: 100%;
+    height: 230px;
+    display: flex;
+    position: relative;
+  }
+  .vehicle-image-wrapper img{
+    width: 100%;
+    object-fit: cover;
+  }
+  .vehicle-image-wrapper .img-uct {
+      position: absolute;
+      width: 120px;
+      top: 5px;
+      left: 5px;
+      background: hsla(0,0%,100%,.8);
+
+  }
+  .vehicle-image-wrapper .img-reservado {
+    position: absolute;
+    width: 110px;
+    right: -1px;
+  }
+  .vehicle-detail{
+    padding: 10px 15px;
+    background-color: #f1f1f1;
+    // background-color: $ligth_2;
+  }
+  .vehicle-detail .title{
+    display: block;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  .vehicle-detail .price-wrapper .price{
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 2.5;
+    color: #e60014
+  }
+  .vehicle-detail .v-divider{
+    color: $tertiary;
+  }
+
+  .vehicle-detail .contact-media{
+    line-height: 2;
+    padding: 7px 0px;
+  }
+
+  .vehicle-detail .contact-media ul li a{
+      align-items: center;
+      border: solid 1px $dark;
+      color: $dark;
+      display: flex;
+      font-size: 17px;
+      height: 37px;
+      justify-content: center;
+      overflow: hidden;
+      padding: 5px;
+    position: relative;
+      transition: all 0.4s ease-in-out;
+      vertical-align: top;
+      width: 37px;
+  }
+  .vehicle-detail .contact-media ul li a:hover{
+    background-color: $dark;
+    color: $white
+  }
+  // .vehicle-detail .contact-media ul li a.facebook{
+  //  background-color: $facebook_color;
+  //     color: white;
+  // }
+  // .vehicle-detail .contact-media ul li a.mail{
+  //  background-color: $primary;
+  //     color: white;
+  // }
+  // .vehicle-detail .contact-media ul li a.whatsapp{
+  //  background-color: $whatsapp_color;
+  //     color: white;
+  // }
+
+  @media (min-width: $breakpoint-sm) {  
+    .vehicle-image-wrapper{
+      width: 100%;
+      height: 150px;
+    }
+    .vehicle{
+      width: 100%;
+    }
+  }
+
+/**
+* Animations
+***/
+.animate-fade-in{
+  -webkit-animation: fadein 2s;
+       -moz-animation: fadein 2s;
+        -ms-animation: fadein 2s;
+         -o-animation: fadein 2s;
+            animation: fadein 2s;
+}
+  @keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  @-moz-keyframes fadein {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+  }
+
+  @-webkit-keyframes fadein {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+  }
+
+  @-ms-keyframes fadein {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+  }
+
+  @-o-keyframes fadein {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+  }
+
+.slick-arrow.slick-next,
+.slick-arrow.slick-prev{
+  background-color: $primary;
+  padding:10px;
+  width: 40px;
+  height: 45px;
+  color: white;
+  z-index: 1;
+  transition: all 0.4s ease-in-out;
+}
+.slick-arrow.slick-next:focus,
+.slick-arrow.slick-prev:focus,
+.slick-arrow.slick-next:hover,
+.slick-arrow.slick-prev:hover{
+  background-color: $dark
+}
+
+.slick-arrow.slick-prev::before,
+.slick-arrow.slick-next::before{
+  color: white;
+}
+.carousel-control-next-icon,
+.carousel-control-prev-icon{
+  padding: 25px;
+  background-size: 50%;
+  background-color: $dark;
+  color: white
+}
