@@ -110,6 +110,10 @@
 				</div>
 			</div>
 		</section>
+
+		<DividerSectionComponent />
+
+		<KintoShareComponent />
 	</div>
 </template>
 

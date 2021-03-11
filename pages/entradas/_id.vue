@@ -48,7 +48,7 @@
 	export default {
 
         async asyncData({ params, $axios }) {
-            const post = await $axios.$get('https://derkayvargas.com/api/entradas/' + params.id);
+            const post = await $axios.$get('https://panelweb.derkayvargas.com/api/entradas/' + params.id);
             //const post = await $axios.$get('http://webdyvsa.test/api/entradas/' + params.id);
             return {post}
             

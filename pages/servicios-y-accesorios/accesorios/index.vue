@@ -50,7 +50,7 @@
 									<img v-else v-lazy="'no-image-aviable.png'">
 								</div>
 								<div class="vehicle-detail">
-									<span class="title">{{ accesorio.nombre }}</span>
+									<span class="title" style="min-height: 60px;">{{ accesorio.nombre }}</span>
 									
 									<div class="custom-divider"></div>
 									
@@ -60,21 +60,19 @@
 									</div>
 									
 									<div class="custom-divider"></div>
-
-									<div class="contact-media d-flex justify-content-between">
-										<span class="d-block">Consultar</span>
-										<ul class="list-inline mb-0">
-											<li class="list-inline-item"><a class="mail" href="#"><i class="far fa-envelope"></i></a></li>
-											<li class="list-inline-item">
-												<a class="whatsapp" 
-												   :href="'https://wa.me/5493624013577?text=Hola%20me%20interesa%20el%20accesorio%20'+accesorio.nombre.replace(' ', '%20')" 
-												   target="_blank">
-												   <i class="fab fa-whatsapp"></i>
-												</a>
-											</li>
-										</ul>
-									</div>
-
+								</div>
+								<div class="contact-media d-flex justify-content-between">
+									<span class="d-block">Consultar</span>
+									<ul class="list-inline mb-0">
+										<!-- <li class="list-inline-item"><a class="mail" href="#"><i class="far fa-envelope"></i></a></li> -->
+										<li class="list-inline-item">
+											<a class="whatsapp" 
+											   :href="'https://wa.me/5493624013577?text=Hola%20me%20interesa%20el%20accesorio%20'+accesorio.nombre.replace(' ', '%20')" 
+											   target="_blank">
+											   <i class="fab fa-whatsapp"></i>
+											</a>
+										</li>
+									</ul>
 								</div>
 							</div>
 						</div>

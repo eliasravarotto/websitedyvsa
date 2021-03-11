@@ -22,7 +22,17 @@
 
   <DividerSectionComponent />
 
-	<FacebookFanPage />
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+      <div class="col-11 col-md-6">
+	       <FacebookFanPage />
+      </div>
+      <div class="col-11 col-md-6">
+         <InstagramfeedComponent />
+      </div>
+    </div>
+  </div>
+
 
   </div>
 </template>

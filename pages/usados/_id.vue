@@ -192,7 +192,7 @@
    
     export default {
     	async asyncData({ params, $axios }) {
-            const vehicle = await $axios.$get('https://derkayvargas.com/api/usados/' + params.id);
+            const vehicle = await $axios.$get('https://panelweb.derkayvargas.com/api/usados/' + params.id);
             return {vehicle}
             
         },
@@ -223,7 +223,7 @@
 	            return 'https://derkayvargas.com/usados/'+this.vehicle.data.slug;
 	          },
 	          image() {
-	            return 'https://derkayvargas.com/'+this.vehicle.data.foto;
+	            return process.env.baseUrl+this.vehicle.data.foto;
 	          },
 	          type() {
 	            return 'website';

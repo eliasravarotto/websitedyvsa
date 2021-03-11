@@ -48,12 +48,12 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    '@nuxtjs/google-analytics',
     '@nuxtjs/firebase'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/google-analytics',
     '@nuxtjs/style-resources',
     'bootstrap-vue/nuxt', 
     '@nuxtjs/recaptcha',
@@ -75,7 +75,10 @@ export default {
     size: 'invisible' // Size: 'compact', 'normal', 'invisible' (v2)
   },
   googleAnalytics: {
-    id: 'G-DS6R56RVMX'
+    id: 'UA-132697927-2',
+    debug: {
+      sendHitTask: process.env.NODE_ENV == 'production'
+    }
   },
   firebase: {
     lazy: false,

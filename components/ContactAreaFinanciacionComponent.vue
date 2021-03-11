@@ -12,7 +12,7 @@
 									<div class="validate-input">
 										<input type="text" 
 											   v-model="message.name" 
-											   name="name" 
+											   name="cliente" 
 											   placeholder="Apellido y Nombre" 
 											   :class="{'custom-input-text form-control':true, 'is-invalid' : invalidName}"> 
 										<label for="cliente" class="label-custom-input-text"><i class="fas fa-user"></i></label>
@@ -25,7 +25,7 @@
 									<div class="validate-input">
 										<input type="number" 
 											   v-model="message.phone" 
-											   name="phone" 
+											   name="telefono" 
 											   placeholder="Teléfono" 
 											   :class="{'custom-input-text form-control':true, 'is-invalid' : invalidPhone}"> 
 										<label for="telefono" class="label-custom-input-text"><i class="fas fa-phone-alt"></i></label>

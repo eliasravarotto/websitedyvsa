@@ -60,7 +60,7 @@
 	</div>
 </template>
 <script>
-	import axios from 'axios'
+	import axios from '~/plugins/axios'
 	export default {
     	props: ['data'],
         data(){
@@ -68,7 +68,8 @@
         		items: null,
                 itemsSm: [],
                 itemsMd: [],
-                displaySkeleton: true
+                displaySkeleton: true,
+                baseUrl: process.env.baseUrl,
         	}
         },
         mounted(){
@@ -78,7 +79,7 @@
             getDataSlide(slide_id){
                 var vm = this;
                 axios
-	                .get('https://derkayvargas.com/slide_get_data/'+slide_id)
+	                .get('/slide_get_data/'+slide_id)
 	                .then(res => {
 	                	setTimeout(function(){
 							vm.displaySkeleton = false;
@@ -90,7 +91,7 @@
 		                            vm.itemsSm.push(item);
 		                        if (item.size == 'MD')
 		                            vm.itemsMd.push(item);
-		                        item.image.public_path = 'https://derkayvargas.com' + item.image.public_path
+		                        item.image.public_path = vm.baseUrl + item.image.public_path
 		                    });
 		                    $('#carouselSm').carousel({interval: 4500, ride: 'carousel'})
 		                    $('#carouselMd').carousel({interval: 4500, ride: 'carousel'})

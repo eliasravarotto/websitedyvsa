@@ -162,7 +162,7 @@
 
 									<li>plandeahorro@derkayvargas.com.ar</li>
 
-									<li>administracion@derkayvargas.com.ar</li>
+									<li>consultas@derkayvargas.com.ar</li>
 
 									<li>gestoria@derkayvargas.com.ar</li>
 

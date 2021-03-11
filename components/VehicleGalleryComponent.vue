@@ -12,7 +12,7 @@
 					<VueSlickCarousel :arrows="true" :dots="true" v-if="modelos.length" v-bind="sliderConfig">
 				      	<div class="vehicle-item" v-for="(modelo, ix) in modelos" :key="ix">
 					      <div class="vehicle-content">
-					      	<a href="#">
+					      	<nuxt-link :to="'modelos/'+modelo.slug">
 					      			<img v-lazy="baseUrl+'/imagenes/logos/logohibrido.jpg'" v-if="modelo.es_hibrido" class="img-es-hibrido">
 					      		<div class="vehicle-image">
 					      			<img v-lazy="baseUrl+modelo.img_modelo" class="w-100">
@@ -20,9 +20,10 @@
 					      		<div class="vehicle-footer">
 					      			<span class="title"> {{modelo.nombre}} </span>
 					      			<ul class="ul-features list-unstyled"></ul>
-					      			<span class="text-muted text-center d-block">DESDE ${{modelo.versiones[0].precio}}</span>
+					      			<span v-if="modelo.versiones[0].moneda == 'ARS'" class="text-muted text-center d-block">Desde <b>${{modelo.versiones[0].precio}}</b></span>
+					      			<span v-if="modelo.versiones[0].moneda == 'USD'" class="text-muted text-center d-block">Desde <b>USD ${{modelo.versiones[0].precio}}</b></span>
 					      		</div>
-					      	</a>
+					      	</nuxt-link>
 					      </div>
 				  		</div>
 				    </VueSlickCarousel>

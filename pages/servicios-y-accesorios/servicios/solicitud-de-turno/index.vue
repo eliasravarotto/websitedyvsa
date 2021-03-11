@@ -10,7 +10,8 @@
 						<p>Dejanos tus datos y estaremos en contacto con usted a la brevedad para confirmar la fecha y hora del turno.</p>
 					</div>
 					<div id="contact-form">
-						<form action="#" method="POST" role="form" autocomplete="off" class="w-100" @submit.prevent="onSubmit">
+						<form ref="contactform" action="#" method="POST" role="form" autocomplete="off" class="w-100" @submit.prevent="onSubmit">
+							<input type="hidden" name="from" value="web-site">
 							<div class="form-group row">
 								<div class="col-md-12">
 									<div class="validate-input">
@@ -92,7 +93,7 @@
 								<div class="col-5">
 									<div class="validate-input">
 										<input v-model="turno.dominio" 
-												name="domiio"
+												name="dominio"
 												type="text"
 												placeholder="Dominio" 
 												:class="{'custom-input-text form-control':true, 'is-invalid' : invalidDominio}">
@@ -147,7 +148,7 @@
 	import axios from '~/plugins/axios'
   	
   	export default {
-  				head(){
+		head(){
           return {
 	            title: 'Toyota Derka y Vargas | Solicitud de turno',
 	            meta: [
@@ -217,17 +218,17 @@
 		      }
 		    },
 		    onSuccess(recaptchaToken) {
-		      const self = this;
-		      this.status = "submitting";
-		      this.turno.from = 'web-site';
-		      this.turno.g_recaptcha_response = recaptchaToken;
+		      	const self = this;
+		      	this.status = "submitting";
+
+		      	let formData = new FormData(this.$refs.contactform);
 
         		axios
-	        		.post('/turno-servicio', this.turno)
+	        		.post('/turno-servicio', formData)
 	        		.then(res=>{
 	        			this.resetValidationForm();
 	        			this.turno = { sucursal: '', modelo: '', servicio: '' };
-	        			notifier.show('Turno Solicitado' , 'Estaremos en contacto con usted a la brevedad para confirmar el turno.', 'success', 'img/clock-48.png', 0);
+	        			notifier.show('Turno Solicitado' , 'Estaremos en contacto con usted a la brevedad para confirmar el turno.', 'success', '/success.png', 0);
 	        			console.log(res);
 	        		})
 	        		.catch(error=>{
@@ -252,6 +253,18 @@
 				          if (error.response.data.error.fecha){
 				          	self.invalidFecha = true;
 				          	self.invalidFechaText = error.response.data.error.fecha[0];
+				          }
+				          if (error.response.data.error.dominio){
+				          	self.invalidDominio = true;
+				          	self.invalidDominioText = error.response.data.error.dominio[0];
+				          }
+				          if (error.response.data.error.modelo){
+				          	self.invalidModelo = true;
+				          	self.invalidModeloText = error.response.data.error.modelo[0];
+				          }
+				          if (error.response.data.error.servicio){
+				          	self.invalidServicio = true;
+				          	self.invalidServicioText = error.response.data.error.servicio[0];
 				          }
 				        }else{
 				        	alert('Ups, algo salió mal. Por favor intente nuevamente más tarde.')

@@ -31,70 +31,128 @@
             </div>
         </section>
         
-    	<section v-show="modelo" class="animate-fade-in">
+    	<section v-show="modelo.id" class="animate-fade-in">
 
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <img v-lazy="baseUrl+modelo.img_logo" style="width: 200px;">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 text-center text-uppercase">
-                        <p class="text-dark">{{ modelo.slogan }}</p>
+            <div class="section">
+                <div class="section" style="position: relative;">
+                    <img src="https://media.gettyimages.com/photos/empty-pavement-with-modern-architecture-picture-id1207663571?s=612x612" class="bg-drive" style="opacity: 0.9">
+                    <div class="container">
+                        <div class="row d-flex justify-content-center align-items-center pt-md-0 pt-5">
+                            <div class="col-11 col-md-6 text-center" >
+                                <img :src="baseUrl+modelo.img_modelo" class="w-100">
+                            </div>
+                            <div class="col-12 col-md-6 mt-3 mt-md-0">
+                               <div class="row">
+                                    <div class="col-md-12 text-center text-md-left">
+                                        <div class="mb-2">
+                                            <img v-lazy="baseUrl+modelo.img_logo" style="width: 200px;">
+                                        </div>
+                                        <div class="mb-4">
+                                            <p>{{ modelo.descripcion }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-11 col-md-6">
+                                        <a href="#" class="action-card-item w-100">
+                                            <h2>Versiones</h2><i class="fas fa-chevron-right"></i>
+                                        </a>
+                                    </div>
+                                    <div class="col-11 col-md-6">
+                                        <a href="#" class="action-card-item w-100">
+                                            <h2>Colores</h2><i class="fas fa-chevron-right"></i>
+                                        </a>
+                                    </div>
+                                    <div class="col-11 col-md-6">
+                                        <a href="#" class="action-card-item w-100">
+                                            <h2>Ficha Técnica</h2><i class="fas fa-chevron-right"></i>
+                                        </a>
+                                    </div>
+                                    <div class="col-11 col-md-6">
+                                        <a href="#" class="action-card-item w-100">
+                                            <h2>Cotizar</h2><i class="fas fa-chevron-right"></i>
+                                        </a>
+                                    </div>
+                                    <div class="col-11 col-md-6">
+                                        <a href="#" class="action-card-item w-100">
+                                            <h2>Test Drive</h2><i class="fas fa-chevron-right"></i>
+                                        </a>
+                                    </div>
+                                    <div class="col-11 col-md-6">
+                                        <a href="#" class="action-card-item w-100">
+                                            <h2>Galería</h2><i class="fas fa-chevron-right"></i>
+                                        </a>
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <section class="section">
+            <div class="section">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6 col-md-12 col-sm-12">
-                            <div id="images_colors" class="text-center">
-                                <img v-for="(data, index) in modelo.colores"
-                                     class="img-fluid animate-fade-in"
-                                     :style="'padding: 0px; '+[index == 0 ? 'display: -webkit-inline-box;' : 'display: none;']" 
-                                     :id="'img_'+data.codigo" 
-                                     v-lazy="baseUrl+data.public_path"
-                                     :key="data.id" 
-                                />
+                            <div class="vehicle-versions">
+
+                                <div class="title-wrapper">
+                                    <span>Versiones</span>
+                                    <h3>Lista de Precios</h3>
+                                </div>
+
+                                <table class="table table-hover tabla-precios">
+                                    <thead>
+                                      <tr>
+                                        <th>VERSION</th>
+                                        <th class="text-right">PRECIO</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>                         
+                                      <tr v-for="version in modelo.versiones" :key="version.id"> 
+                                        <td class="w-50 text-muted version" style="font-size: 15px;">{{ version.nombre }}</td>
+                                        <td class="w-50 text-right precio" style="font-size: 15px"> {{version.moneda}} $ {{ version.precio }}</td>
+                                      </tr>
+                                    </tbody>
+                                </table>
+                                <div class="alert alert-bg-light text-center" role="alert"><i class="fas fa-info-circle"></i> El precio <b>NO</b> incluye flete ni gastos de inscripción.</div>
                             </div>
-                            <br>
-                            <div class="text-center">
-                                <label>{{ color_selected }}</label>
-                            </div>
-                            <ul class="list-inline list-colors text-center mar-top-15">
-                                <li v-for="data in modelo.colores" 
-                                    @click.prevent="changeColor(data.codigo, data.color)"
-                                    class="list-inline-item"
-                                    :id="data.codigo" 
-                                    :key="data.id">
-                                    <div class="circle" :style="{'background-color': '#'+data.codigo}"></div>
-                                </li>
-                            </ul>
                         </div>
                         <div class="col-lg-6 col-md-12 col-sm-12">
-                            <table class="table table-hover tabla-precios">
-                                <thead>
-                                  <tr>
-                                    <th>VERSION</th>
-                                    <th class="text-right">PRECIO</th>
-                                  </tr>
-                                </thead>
-                                <tbody>                         
-                                  <tr v-for="version in modelo.versiones" :key="version.id"> 
-                                    <td class="w-50 text-muted version" style="font-size: 15px;">{{ version.nombre }}</td>
-                                    <td class="w-50 text-right precio" style="font-size: 15px"> {{version.moneda}} $ {{ version.precio }}</td>
-                                  </tr>
-                            </tbody>
-                            </table>
-                            <div class="alert alert-bg-light text-center" role="alert"><i class="fas fa-info-circle"></i> El precio <b>NO</b> incluye flete ni gastos de inscripción.</div>
+                            <div class="vehicle-colors">
+                                <div id="images_colors" class="text-center">
+                                    <img v-for="(data, index) in modelo.colores"
+                                         class="img-fluid animate-fade-in"
+                                         :style="'padding: 0px; '+[index == 0 ? 'display: -webkit-inline-box;' : 'display: none;']" 
+                                         :id="'img_'+data.codigo" 
+                                         v-lazy="baseUrl+data.public_path"
+                                         data-loading="/spiner-loading.gif"
+                                         :key="data.id" 
+                                    />
+                                </div>
+
+                                <div class="list-colors">
+                                    <div class="text-center">
+                                        <label>{{ color_selected }}</label>
+                                    </div>
+                                    <ul class="list-inline text-center">
+                                        <li v-for="data in modelo.colores" 
+                                            @click.prevent="changeColor(data.codigo, data.color)"
+                                            class="list-inline-item"
+                                            :id="data.codigo" 
+                                            :key="data.id">
+                                            <div class="circle" :style="{'background-color': '#'+data.codigo}"></div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                            </div>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
 
-            <section class="section">
+            <div class="section">
                 <div class="container">
                 <div class="title-wrapper">
                     <span>Galería de Imágenes</span>
@@ -119,7 +177,7 @@
                     :show-light-box="false"
                   />
                 </div>
-            </section>
+            </div>
 
         </section>
 
@@ -134,7 +192,7 @@
 	export default {
 
         async asyncData({ params, $axios }) {
-            const vehicle = await $axios.$get('https://derkayvargas.com/api/modelos/' + params.id);
+            const vehicle = await $axios.$get('https://panelweb.derkayvargas.com/api/modelos/' + params.id);
             return {vehicle}
             
         },
@@ -229,6 +287,20 @@
 </script>
 
 <style lang="scss" scoped>
+    .vehicle-colors{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .vehicle-colors #images_colors{
+        width: 450px;
+        height: 330px;
+    }
+    .vehicle-colors #images_colors img{
+        width: 450px;
+        -o-object-fit: cover;
+        object-fit: cover;
+    }
     .circle {
         border-radius: 50%;
         border: 1px solid $dark;
@@ -261,9 +333,38 @@
         opacity: 1;
         cursor: pointer;
     }
+    .bg-drive{
+        height: 190px;
+    }
+    .action-card-item{
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 15px;
+        margin: 5px 0px;
+        -webkit-box-shadow: 1px 0.5px 4px -1px rgb(0 0 0 / 75%);
+        -moz-box-shadow: 1px 0.5px 4px -1px rgb(0 0 0 / 75%);
+        box-shadow: 1px 0.5px 4px -1px rgb(0 0 0 / 75%);
+    }
+    .action-card-item h2{
+        font-weight: 400;
+        font-size: 1.3rem;
+        line-height: 1.4;
+        // padding: 1.5rem;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
     @media (min-width: $breakpoint-lg) { 
         .img-vehicle{
             width: 350px;
         }
     }
+
+    @media (min-width: $breakpoint-md) { 
+        .bg-drive{
+            height: 100%;
+        }
+    }
+
+
 </style>

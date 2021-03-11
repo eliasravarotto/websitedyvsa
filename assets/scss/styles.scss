@@ -338,12 +338,14 @@ a.button {
     color: $tertiary;
   }
 
+  .vehicle .contact-media,
   .vehicle-detail .contact-media{
     line-height: 2;
-    padding: 7px 0px;
+    padding: 0px 15px 10px 15px;
+    background-color: #f1f1f1;
   }
 
-  .vehicle-detail .contact-media ul li a{
+  .vehicle .contact-media ul li a{
       align-items: center;
       border: solid 1px $dark;
       color: $dark;
@@ -358,7 +360,7 @@ a.button {
       vertical-align: top;
       width: 37px;
   }
-  .vehicle-detail .contact-media ul li a:hover{
+  .vehicle .contact-media ul li a:hover{
     background-color: $dark;
     color: $white
   }
@@ -448,3 +450,39 @@ a.button {
   background-color: $dark;
   color: white
 }
+
+
+/*
+* KINTO SHARE
+**/
+.text-color-kinto{
+    color: #00708d;
+  }
+  .text-color-kinto2{
+    color: #002732;
+  }
+
+  .btn-kinto {
+      color: #002732;
+      background-color: #e3e9eb;
+      border-color: #e3e9eb;
+      font-weight: 500;
+      border-radius: 100px;
+  }
+  .bg-drive{
+    position: absolute;
+      z-index: -1;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      height: 225px;
+      width: 100%;
+  }
+  @media (min-width: $breakpoint-md) {
+    .bg-drive{
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        height: 100%;
+        width: 45%;
+    }
+  }

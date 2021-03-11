@@ -10,13 +10,14 @@
 						<p>Dejanos tus datos y estaremos en contacto con usted a la brevedad.</p>
 					</div>
 					<div id="contact-form">
-						<form action="#" method="POST" role="form" autocomplete="off" class="w-100" @submit.prevent="onSubmit">
+						<form ref="contactform" action="#" method="POST" role="form" autocomplete="off" class="w-100" @submit.prevent="onSubmit">
+							<input type="hidden" name="from" value="contacto">
 							<div class="form-group row">
 								<div class="col-md-12">
 									<div class="validate-input">
 										<input type="text" 
 											   v-model="message.name" 
-											   name="cliente" 
+											   name="name" 
 											   placeholder="Apellido y Nombre" 
 											   :class="{'custom-input-text form-control':true, 'is-invalid' : invalidName}"> 
 										<label for="cliente" class="label-custom-input-text"><i class="fas fa-user"></i></label>
@@ -29,7 +30,7 @@
 									<div class="validate-input">
 										<input type="number" 
 											   v-model="message.phone" 
-											   name="telefono" 
+											   name="phone" 
 											   placeholder="Teléfono" 
 											   :class="{'custom-input-text form-control':true, 'is-invalid' : invalidPhone}"> 
 										<label for="telefono" class="label-custom-input-text"><i class="fas fa-phone-alt"></i></label>
@@ -156,7 +157,7 @@
 	            return 'https://derkayvargas.com/contacto';
 	          },
 	          image() {
-	            return 'https://test.derkayvargas.com/logo-og.jpg';
+	            return 'https://derkayvargas.com/logo-og.jpg';
 	          },
 	          type() {
 	            return 'website';
@@ -209,10 +210,11 @@
 		    onSuccess(token){
 		    	const self = this;
 				this.status = "submitting";
-				this.message.from = 'contacto';
+
+				let formData = new FormData(this.$refs.contactform);
 
 			 	axios
-	        		.post('/message', self.message)
+	        		.post('/message', formData)
 	        		.then(res=>{
 	        			notifier.show('Mensaje Enviado.' , 'Gracias por comunicarte con nosotros, estaremos en contacto con usted a la brevedad.', 'success', '/success.png', 30000);
 	        			this.resetValidationForm();

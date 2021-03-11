@@ -130,17 +130,16 @@
 										
 										<div class="custom-divider"></div>
 
-										<div class="contact-media d-flex justify-content-between">
-											<span class="d-block">Consultar</span>
-											<ul class="list-inline mb-0">
-												<li class="list-inline-item"><a class="mail" href="#"><i class="far fa-envelope"></i></a></li>
-												<li class="list-inline-item"><a class="facebook" href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-												<li class="list-inline-item"><a class="whatsapp" href="#" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
-											</ul>
-										</div>
-
 									</div>
 								</nuxt-link>
+
+								<div class="contact-media d-flex justify-content-between">
+									<span class="d-block">Consultar</span>
+									<ul class="list-inline mb-0">
+										<li class="list-inline-item"><a class="mail" href="#UsadosContactAreaComponent"><i class="far fa-envelope"></i></a></li>
+										<li class="list-inline-item"><a class="facebook" href="https://www.facebook.com/derkayvargas" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+									</ul>
+								</div>
 							</div>
 						</div>
 					</template>
@@ -155,7 +154,7 @@
 		</section>
 
 		<section class="section">
-			<div class="container">
+			<div class="container" id="UsadosContactAreaComponent">
 				<UsadosContactAreaComponent />
 			</div>
 		</section>
