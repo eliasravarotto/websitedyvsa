@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper">
+    <div class="">
 
         <section v-if="!modelo.id">
             <div class="container">
@@ -33,7 +33,7 @@
         
     	<section v-show="modelo.id" class="animate-fade-in">
 
-            <div class="section">
+            <div class="modelo-description">
                 <div class="section" style="position: relative;">
                     <img src="https://media.gettyimages.com/photos/empty-pavement-with-modern-architecture-picture-id1207663571?s=612x612" class="bg-drive" style="opacity: 0.9">
                     <div class="container">
@@ -54,22 +54,22 @@
                                 </div>
                                 <div class="row d-flex justify-content-center">
                                     <div class="col-11 col-md-6">
-                                        <a href="#" class="action-card-item w-100">
+                                        <a href="#versiones" class="action-card-item w-100">
                                             <h2>Versiones</h2><i class="fas fa-chevron-right"></i>
                                         </a>
                                     </div>
                                     <div class="col-11 col-md-6">
-                                        <a href="#" class="action-card-item w-100">
+                                        <a href="#colores" class="action-card-item w-100">
                                             <h2>Colores</h2><i class="fas fa-chevron-right"></i>
                                         </a>
                                     </div>
                                     <div class="col-11 col-md-6">
-                                        <a href="#" class="action-card-item w-100">
+                                        <a :href="modelo.link_ficha_tecnica" target="_blank" class="action-card-item w-100">
                                             <h2>Ficha Técnica</h2><i class="fas fa-chevron-right"></i>
                                         </a>
                                     </div>
                                     <div class="col-11 col-md-6">
-                                        <a href="#" class="action-card-item w-100">
+                                        <a href="https://dyv.e.toyota.com.ar/inventory" target="_blank" class="action-card-item w-100">
                                             <h2>Cotizar</h2><i class="fas fa-chevron-right"></i>
                                         </a>
                                     </div>
@@ -79,7 +79,7 @@
                                         </a>
                                     </div>
                                     <div class="col-11 col-md-6">
-                                        <a href="#" class="action-card-item w-100">
+                                        <a href="#galeria" class="action-card-item w-100">
                                             <h2>Galería</h2><i class="fas fa-chevron-right"></i>
                                         </a>
                                     </div>
@@ -94,7 +94,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6 col-md-12 col-sm-12">
-                            <div class="vehicle-versions">
+                            <div class="vehicle-versions" id="versiones">
 
                                 <div class="title-wrapper">
                                     <span>Versiones</span>
@@ -119,7 +119,7 @@
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-12 col-sm-12">
-                            <div class="vehicle-colors">
+                            <div class="vehicle-colors" id="colores">
                                 <div id="images_colors" class="text-center">
                                     <img v-for="(data, index) in modelo.colores"
                                          class="img-fluid animate-fade-in"
@@ -132,8 +132,8 @@
                                 </div>
 
                                 <div class="list-colors">
-                                    <div class="text-center">
-                                        <label>{{ color_selected }}</label>
+                                    <div class="text-right mb-2">
+                                        <label class="label-color-selected">{{ color_selected }}</label>
                                     </div>
                                     <ul class="list-inline text-center">
                                         <li v-for="data in modelo.colores" 
@@ -152,30 +152,34 @@
                 </div>
             </div>
 
-            <div class="section">
+            <div class="section" id="galeria" v-if="modelo.gallery">
                 <div class="container">
-                <div class="title-wrapper">
-                    <span>Galería de Imágenes</span>
-                    <h1> Interior y Exterior</h1>
-                </div>
-                  <div class="row d-flex justify-content-center gallery">
-                    <div class="col-10 col-sm-6 col-md-3 col-lg-2 mb-3 _gallery-item" 
-                         v-for="(image, ix) in modelo.gallery"
-                         :key="ix">
-                         <div class="gallery-item" @click="openGallery(ix)">
-                              <img class="img-fluid"
-                                   v-lazy="image.src || image.thumb">
+                    <div class="title-wrapper">
+                        <span>Galería de Imágenes</span>
+                        <h1> Interior y Exterior</h1>
+                    </div>
+                    <div class="row d-flex justify-content-center gallery">
+                        <div class="col-10 col-sm-6 col-md-3 col-lg-2 mb-3 _gallery-item" 
+                             v-for="(image, ix) in modelo.gallery"
+                             :key="ix">
+                             <div class="gallery-item" @click="openGallery(ix)">
+                                  <img class="img-fluid"
+                                       v-lazy="image.src || image.thumb">
+                            </div>
                         </div>
                     </div>
-                  </div>
 
-                  <light-box
-                    v-if="modelo.gallery"
-                    ref="lightbox"
-                    :media="modelo.gallery"
-                    :show-caption="false"
-                    :show-light-box="false"
-                  />
+                    <light-box
+                        v-if="modelo.gallery.length"
+                        ref="lightbox"
+                        :media="modelo.gallery"
+                        :show-caption="false"
+                        :show-light-box="false"
+                    />
+                    <div v-else class="alert alert-bg-light text-center" role="alert">
+                        <i class="far fa-images"></i> No se encontraron imagenes.
+                    </div>
+
                 </div>
             </div>
 
@@ -290,9 +294,10 @@
     .vehicle-colors{
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-end;
     }
-    .vehicle-colors #images_colors{
+
+/*    .vehicle-colors #images_colors{
         width: 450px;
         height: 330px;
     }
@@ -300,6 +305,12 @@
         width: 450px;
         -o-object-fit: cover;
         object-fit: cover;
+    }
+    */
+    
+    .list-colors .label-color-selected{
+        color: $dark;
+        font-weight: 600;
     }
     .circle {
         border-radius: 50%;
@@ -314,7 +325,7 @@
         position: relative;
     }
     #images_colors{
-        min-height: 297px;
+        min-height: 200px;
     }
     .gallery .gallery-item:before {
         display: block;
@@ -362,7 +373,22 @@
 
     @media (min-width: $breakpoint-md) { 
         .bg-drive{
-            height: 100%;
+            height: 90%;
+        }
+        .modelo-description{
+            padding: 3.5rem 0rem;
+        }
+        .vehicle-colors #images_colors{
+            width: 450px;
+            height: 330px;
+        }
+        .vehicle-colors #images_colors img{
+            width: 450px;
+            -o-object-fit: cover;
+            object-fit: cover;
+        }
+        #images_colors{
+            min-height: 270px;
         }
     }
 

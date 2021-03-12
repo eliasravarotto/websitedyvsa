@@ -31,7 +31,7 @@
 						<span class="total-vehicles d-block my-1"> {{ usados.length }} Vehiculos encontrados</span>
 						<ul class="list-inline my-1">
 							<template v-for="(value, ix) in filterApplied">
-								<li class="list-inline-item mr-4" :key="ix" v-if="value!=null">
+								<li class="list-inline-item mr-4" :key="ix" v-if="value!=null && value!=true && alue!=false">
 									<a href="#" @click.prevent="removeFilter(ix)">
 										<i class="fas fa-times"></i>
 										{{value}}
@@ -68,6 +68,14 @@
 						    	<option value="MANUAL">MANUAL</option>
 						    	<option value="AUTOMÁTICA">AUTOMÁTICA</option>
 						    </select>
+						  </div>
+						  <div class="form-group mr-2 mb-2">
+						  	<div class="form-check"> 
+							  <input class="form-check-input" type="checkbox" id="defaultCheck1" @change="filterData()" v-model="filterApplied.uct">
+							  <label class="form-check-label" for="defaultCheck1">
+							    Usado Certificado Toyota
+							  </label>
+							</div>
 						  </div>
 						  <div class="form-group mr-2 mb-2">
 						  	<button class="btn btn-light btn-sm" @click.prevent="resetFilters()" :disabled="status==='sendingRequest'"> <img v-if="status === 'sendingRequest'" src="spiner-loading.gif" height="20px;"> Limpiar filtros</button>
@@ -206,7 +214,7 @@
         		colores: [],
         		marcas: [],
         		anios: [],
-        		filterApplied: { marca: null, anio: null, color: null, transmision: null },
+        		filterApplied: { marca: null, anio: null, color: null, transmision: null, uct: null },
         		status: '',
         		noVehiclesAviable: false
         	}
@@ -239,7 +247,12 @@
         		let url = '/usados?visible=1';
 				for (var [key, value] of Object.entries(this.filterApplied)) {
 				    if (value) {
-				    	url += '&'+key+'='+ value;
+				    	if (key=='uct') {
+				    		let val = value == true ? 1 : 0;
+				    		url += '&'+key+'='+ val;
+				    	}else{
+				    		url += '&'+key+'='+ value;
+				    	}
 				    }
 				}
 
