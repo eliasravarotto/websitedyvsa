@@ -2,29 +2,25 @@
     <div class="">
 
         <section v-if="!modelo.id">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 d-flex justify-content-center">
-                        <div class="skeleton skeleton-title" style="width: 200px;"></div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 d-flex justify-content-center text-uppercase mt-2">
-                        <div class="skeleton skeleton-p" style="width: 400px;"></div>
-                    </div>
-                </div>
-            </div>
-
             <div class="section">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6 col-md-12 col-sm-12">
-                            <div class="w-75 skeleton skeleton-body"></div>
-                            <div class="skeleton skeleton-p mt-4" style="width: 400px;"></div>
+                            <div class="w-100 skeleton skeleton-body mb-3"></div>
                         </div>
-                        <div class="col-lg-6 col-md-12 col-sm-12 d-flex justify-content-center flex-column">
-                            <div v-for="ix in [1,2,3,4,5,6]" :key="ix" class="skeleton skeleton-p w-100 mb-3"></div>
-                            <div class="skeleton skeleton-title mt-4"></div>
+                        <div class="col-lg-6 col-md-12 col-sm-12">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="skeleton skeleton-title w-50 mb-3"></div>
+                                    <div class="skeleton skeleton-p w-100"></div>
+                                    <div class="skeleton skeleton-p w-100 mt-1 mb-3"></div>
+                                </div>
+                            </div>
+                            <div class="row d-flex justify-content-center">
+                                <div class="col-md-6 col-10" v-for="ix in [1,2,3,4,5,6]" :key="ix">
+                                    <div  class="w-100 skeleton skeleton-title w-100 mb-3"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -35,7 +31,7 @@
 
             <div class="modelo-description">
                 <div class="section" style="position: relative;">
-                    <img src="https://media.gettyimages.com/photos/empty-pavement-with-modern-architecture-picture-id1207663571?s=612x612" class="bg-drive" style="opacity: 0.9">
+                    <img src="/bg-header-models.jpeg" class="bg-drive" style="opacity: 0.9">
                     <div class="container">
                         <div class="row d-flex justify-content-center align-items-center pt-md-0 pt-5">
                             <div class="col-11 col-md-6 text-center" >

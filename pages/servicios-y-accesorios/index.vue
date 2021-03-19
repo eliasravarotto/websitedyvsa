@@ -123,7 +123,7 @@ Nuestros vehículos híbridos cuentan con una garantía de 8 años o 160.000km s
 	            return 'https://derkayvargas.com/servicios-y-accesorios';
 	          },
 	          image() {
-	            return 'https://test.derkayvargas.com/logo-og.jpg';
+	            return 'https://derkayvargas.com/logo-og.jpg';
 	          },
 	          type() {
 	            return 'website';

@@ -201,7 +201,7 @@
 	            return 'https://derkayvargas.com/usados';
 	          },
 	          image() {
-	            return 'https://test.derkayvargas.com/logo-og.jpg';
+	            return 'https://derkayvargas.com/logo-og.jpg';
 	          },
 	          type() {
 	            return 'website';
